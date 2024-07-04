@@ -1,10 +1,10 @@
-# Name of Machine
-Explanation of the Machine
+# Reading Machine
+A machine that reads texts analytically and syntopically.
 <pre>
-  pip install name-of-the-machine
+  pip install reading-machine
 </pre>
 Then:
 ```Python
   # Python
-  import name_of_the_machine
+  import reading_machine
 ```

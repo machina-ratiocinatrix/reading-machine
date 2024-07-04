@@ -6,12 +6,12 @@ build-backend = "setuptools.build_meta"
 where = ["src"]
 
 [project]
-name = "name-of-the-machine"
+name = "reading-machine"
 version = "0.0.1"
 authors = [
     {name="Alexander Fedotov", email="alex.fedotov@aol.com"},
 ]
-description = "Description of the Machine"
+description = "A machine that reads texts analytically and syntopically."
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers=[
@@ -24,5 +24,5 @@ dependencies = [
     "PyYAML >= 6.0.1"
 ]
 [project.urls]
-"Homepage" = "https://github.com/org_name/package_name"
-"Bug Tracker" = "https://github.com/org_name/package_name/issues"
+"Homepage" = "https://github.com/machina-ratiocinatrix/reading-machine"
+"Bug Tracker" = "https://github.com/machina-ratiocinatrix/reading-machine/issues"
