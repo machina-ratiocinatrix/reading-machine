@@ -11,7 +11,7 @@ echo "Theodotos-Alexandreus: Are language models seeking the Truth, machine?" \
 
 Or, with a local pip installation:
 ```bash
-pip install reading-machine
+python3 -m pip install --user git+https://github.com/machina-ratiocinatrix/reading-machine.git
 ```
 Set the environment variables:
 ```bash
