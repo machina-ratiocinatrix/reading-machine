@@ -4,7 +4,7 @@ A machine that reads texts analytically and syntopically.
 In order to launch it from the command line or as a Python subprocess:
 ```bash
 echo "Theodotos-Alexandreus: Are language models seeking the Truth, machine?" \
-  | uvx reading-machine \
+  | uvx --from git+https://github.com/machina-ratiocinatrix/reading-machine reading-machine \
     --provider-api-key=sk-proj-... \
     --github-token=ghp_... 
 ```
