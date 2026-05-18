@@ -18,8 +18,8 @@ from .utilities import new_plato_text
 def options_and_arguments():
     # Initialize the parser
     parser = argparse.ArgumentParser(
-        description="Name-of-the-Machine thinks for you about the meanings.",
-        epilog="Example:  name-of-the-machine input_text.txt > output_text.txt"
+        description="Reading-Machine thinks for you about the meanings.",
+        epilog="Example:  reading-machine input_text.txt > output_text.txt"
         # thinking-machine -a multilogue.txt > tmp && mv tmp multilogue.txt
     )
 
@@ -54,10 +54,10 @@ def options_and_arguments():
 
 def run():
     """
-    $ text | name-of-the-machine                        # Accepts text from the pipe
-    $ echo "...<text>..." | name-of-the-machine         #
+    $ text | reading-machine                        # Accepts text from the pipe
+    $ echo "...<text>..." | reading-machine         #
 
-    $ name-of-the-machine multilogue.txt new_turn.txt    # ...or files.
+    $ reading-machine multilogue.txt new_turn.txt    # ...or files.
     """
 
     args = options_and_arguments().parse_args()
@@ -130,12 +130,12 @@ def run():
         utterance = "My answer is ready"
         # Open syslog connection
         syslog.openlog(
-            ident="name-of-the-machine",
+            ident="reading-machine",
             logoption=syslog.LOG_NDELAY,
             facility=syslog.LOG_USER
         )
         # Signal (single line less than 4096 only!)
-        syslog.syslog(syslog.LOG_INFO, f"name-of-the-machine: {utterance}.")
+        syslog.syslog(syslog.LOG_INFO, f"reading-machine: {utterance}.")
         syslog.closelog()
 
     except Exception as e:

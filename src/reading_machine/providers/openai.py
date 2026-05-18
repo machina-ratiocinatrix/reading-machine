@@ -12,23 +12,23 @@ from os import environ
 
 
 def respond(messages=None, instructions=None, **kwargs):
+    """ All parameters should be in kwargs, but they are optional
     """
-    Sends a request to the Groq Responses API using only Python's built-in urllib.
-    """
-    api_base = environ.get('GROQ_API_BASE', 'https://api.groq.com/openai/v1')
-    api_key = environ.get('GROQ_API_KEY', '')
-    default_model = environ.get('GROQ_DEFAULT_MODEL', 'openai/gpt-oss-120b')
+    api_key = environ.get("OPENAI_API_KEY", '')
+    default_model = environ.get("OPENAI_DEFAULT_MODEL", 'gpt-5.4')
+    api_base = environ.get("OPENAI_API_BASE", "https://api.openai.com/v1")
 
     instruction = kwargs.get('system_instruction', instructions)
 
     # Define the payload
     payload = {
-        "model": kwargs.get("model", default_model),
-        "instructions": instruction,
-        "input": messages,
-        "max_output_tokens": kwargs.get("max_tokens", 65536),
+        "model":            kwargs.get("model", default_model),
+        "instructions":     instruction,
+        "input":            messages,
+        "max_output_tokens": kwargs.get("max_tokens", 64000),
         "reasoning": {
-            "effort": "high"
+            "effort": "xhigh",
+            "summary": "detailed"
         }
     }
 
@@ -39,7 +39,7 @@ def respond(messages=None, instructions=None, **kwargs):
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}",
-        "User-Agent": "Name-of-the-Machine"
+        "User-Agent": "Reading-Machine"
     }
 
     # Create the Request object
@@ -61,7 +61,7 @@ def respond(messages=None, instructions=None, **kwargs):
                     for chunk in part['content']:
                         text += chunk['text']
                 elif part['type'] == 'reasoning':
-                    for chunk in part['content']:
+                    for chunk in part['summary']:
                         thoughts += chunk['text']
         return thoughts, text
 
